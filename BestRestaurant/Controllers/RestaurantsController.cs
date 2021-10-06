@@ -7,11 +7,11 @@ using System.Linq;
 
 namespace BestRestaurant.Controllers
 {
-  public class RestaurantController : Controller
+  public class RestaurantsController : Controller
   {
     private readonly BestRestaurantContext _db;
 
-    public RestaurantController(BestRestaurantContext db)
+    public RestaurantsController(BestRestaurantContext db)
     {
       _db = db;
     }
@@ -45,7 +45,7 @@ namespace BestRestaurant.Controllers
     public ActionResult Edit(int id)
     {
       var thisRestaurant = _db.Restaurants.FirstOrDefault(restaurant => restaurant.RestaurantId == id);
-      ViewBag.CuisineId = new SelectList(_db.Cuisines, "CuisinesId", "Name");
+      ViewBag.CuisineId = new SelectList(_db.Cuisines, "CuisineId", "Name");
       return View(thisRestaurant);
     }
 
